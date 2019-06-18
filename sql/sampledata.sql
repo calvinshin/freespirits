@@ -13,7 +13,7 @@ CREATE TABLE trips(
   duration INTEGER(2),
   travel_philosophy VARCHAR(100),
   description VARCHAR(500),
-  budget_day MONEY,
+  budget_day INTEGER(4),
   currency VARCHAR(30),
   users VARCHAR(255),
   status VARCHAR(30),
@@ -26,8 +26,8 @@ CREATE TABLE profiles(
   id INTEGER(11) AUTO_INCREMENT NOT NULL,
   fname VARCHAR(50),
   lname VARCHAR(50),
-  pronoun VARCHAR(30),
-  picture IMAGE,
+  gender VARCHAR(30),
+  picture VARCHAR(500),
   travel_philosophy VARCHAR(100),
   description VARCHAR(500),
   email VARCHAR(100),
@@ -36,9 +36,9 @@ CREATE TABLE profiles(
 );
 
 INSERT INTO trips(title, authorId, destination, starting_date, end_date, duration, travel_philosophy, description, budget_day, currency, status, group_size, primary_language)
-VALUES ("Trip to Mexico!", 1, "Mexico City", "09/10/2019", "10/25/2019", 10, "Wild", "Come have some fun in Mexico City!", 100, "USD", "Open", 6, "English"),
-("Machu Picchu!!!!", 1, "Cusco", "09/10/2019", "10/25/2019", 4, "Wild", "Come have some fun taking a bus up to Machu Picchu!", 50, "USD", "Open", 3, "English"),
-("Asia somewhere", 2, "Seoul", "10/12/2019", "12/25/2019", 19, "Foody", "I honestly just need to eat some good food and want company.", 400, "USD", "Open", 3, "English"),
+VALUES ("Trip to Mexico!", 1, "Mexico City", "2019-09-10", "2019-10-25", 10, "Wild", "Come have some fun in Mexico City!", 100, "USD", "Open", 6, "English"),
+("Machu Picchu!!!!", 1, "Cusco", "2019-09-10", "2019-10-25", 4, "Wild", "Come have some fun taking a bus up to Machu Picchu!", 50, "USD", "Open", 3, "English"),
+("Asia somewhere", 2, "Seoul", "2019-10-12", "2019-12-25", 19, "Foody", "I honestly just need to eat some good food and want company.", 400, "USD", "Open", 3, "English");
 
 INSERT INTO profiles(fname, lname, travel_philosophy, description, email, primary_language, gender)
 VALUES ("Janet", "Kim", "Wild", "I like to have fun and go to a lot of different places!", "test@gmail.com", "English", "female"),
