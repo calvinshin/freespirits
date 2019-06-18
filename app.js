@@ -16,9 +16,9 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 //is this file going to exist?
-var routes = require("./controllers/tripController.js");
+// var routes = require("./controllers/tripController.js");
 
-app.use(routes);
+// app.use(routes);
 
 app.get("*", function(req, res) {
     res.send("This is working!");
