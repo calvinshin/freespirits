@@ -19,7 +19,7 @@ CREATE TABLE trips(
   status VARCHAR(30),
   group_size INTEGER(2),
   primary_language VARCHAR(30),
-  createdAt TIMESTAMP NOT NULL,
+  createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 );
 
@@ -33,7 +33,7 @@ CREATE TABLE profiles(
   description VARCHAR(500),
   email VARCHAR(100),
   primary_language VARCHAR(30),
-  createdAt TIMESTAMP NOT NULL,
+  createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 );
 
