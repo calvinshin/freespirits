@@ -7,6 +7,9 @@
         <p>Destination: {{this.destination}}</p>
         <p>Dates: {{this.starting_date}} - {{this.end_date}}</p>
         <p>Group size: {{group_size}} </p>
+        <p><form action="/individual-trip/{{this.id}}" method="get">
+            <button type="submit">Check this trip out</button>
+        </form></p>
     {{/each}}
 
 </div>
