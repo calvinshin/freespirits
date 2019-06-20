@@ -1,0 +1,12 @@
+{{!-- <h1>Trip Search Results</h1> --}}
+
+<div>
+    {{#each trips}}
+        
+        <p>Trip ID: {{this.id}}</p>
+        <p>Destination: {{this.destination}}</p>
+        <p>Dates: {{this.starting_date}} - {{this.end_date}}</p>
+        <p>Group size: {{group_size}} </p>
+    {{/each}}
+
+</div>
