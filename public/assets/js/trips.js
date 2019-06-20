@@ -1,15 +1,15 @@
+// alert("hey")
 
-
-$(".search-trips").on("click", function(event) {
-    event.preventDefault();
+// $(".search-trips").on("click", function(event) {
+//     event.preventDefault();
     
-    $.ajax({
-        type: "GET",
-        url: "/searchResults"
+//     $.ajax({
+//         type: "GET",
+//         url: "/search-results"
         
-    }).then(function(response) {
-        console.log(response)
-    });
+//     }).then(function(response) {
+//         console.log(response)
+//     });
 
     // app.get ("/api/trips", function(req, res) {
     //     createConnection.query("SELECT * FROM trips", function (err, result) {
@@ -21,8 +21,8 @@ $(".search-trips").on("click", function(event) {
         
     
 
-});
+// });
 
-// $(function() {
+// 2. // $(function() {
     
 // });
