@@ -1,3 +1,5 @@
+var connection = require("./config/connection.js");
+
 var express = require("express");
 
 var app = express();
@@ -20,11 +22,29 @@ app.set("view engine", "handlebars");
 
 // app.use(routes);
 
-app.get("*", function(req, res) {
-    res.send("This is working!");
+
+app.get ("/searchResults", function(req, res) {
+    connection.query("SELECT * FROM trips", function (err, trips) {
+        // res.send("/api/trips")
+        res.render("searchResults", {trips: trips})
+    })
+    //index.handlebars file. 
+    
 })
+
+app.get("/search", function(req, res) {
+    res.render("index")
+});
+
+// app.get("*", function(req, res) {
+//     res.send("This is working!");
+// })
+
+
 
 // Listen for the app
 app.listen(PORT, function() {
     console.log("Listening on PORT " + PORT)
 })
+
+//this code below needs to go in the trips.js file
