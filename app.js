@@ -38,6 +38,16 @@ app.get("/search-results", function(req, res) {
     })
 })
 
+app.get("/individual-trip/:id", function(req, res) {
+    console.log(req.params);
+    connection.query("SELECT * FROM trips WHERE id = ?", [req.params.id], function (err, trips) {
+        // res.send("/api/trips")
+        console.log(trips)
+    res.render("individual-trip", trips[0])
+    
+    })
+})
+
 app.get ("/api/trips", function(req, res) {
     connection.query("SELECT * FROM trips", function (err, trips) {
         // res.send("/api/trips")
@@ -46,6 +56,9 @@ app.get ("/api/trips", function(req, res) {
     //index.handlebars file. 
 })
 
+// app.get ("/tripID", function (req, res) {
+//     res.render("individual-trip", {singleTrip: singleTrip})
+// })
 
 
 app.get("*", function(req, res) {
