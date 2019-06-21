@@ -28,6 +28,19 @@ connection.connect(function(err) {
         return;
     }
     console.log("connected as id " + connection.threadId);
+    connection.query("SHOW tables;", function(err, response) {
+        if (err) throw err;
+        let tableArray = [];
+        for(let i = 0; i < response.length; i++) {
+            console.log(response[i]);
+            Object.entries(response[i]).forEach(p => {
+                tableArray.push(p[1]);
+            });
+        }
+        connection.tables = tableArray;
+        console.log(connection.tables);
+    }); 
+    // console.log(connection.tables)
 });
 
 module.exports = connection;
