@@ -17,3 +17,7 @@ console.log("\n\n\n");
 orm.Read("profiles", function(result) {
     console.log(result);
 }, "fname", "Octoman")
+
+// orm.Read("trips", function(result) {
+//     console.log(result);}, "trip_id"
+// })
