@@ -34,7 +34,6 @@ router.get("/search-results", function(req, res) {
 router.get(
     "/individual-trip/:id",
     function(req, res) {
-        console.log(req.params);
         orm.Read("trips", function(trips) {
             res.render("individual-trip", trips[0]);
         },
