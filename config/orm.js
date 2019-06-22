@@ -18,7 +18,6 @@ var orm = {
         
         // Currently this could be affected by SQL injections
         if(column && parameter) {
-            console.log("both exist");
             var queryString = "SELECT * FROM `" + table + "` WHERE `" + column + "` = ?;";
             connection.query(queryString, [parameter], function(err, result) {
                 if (err) throw err;
@@ -26,7 +25,6 @@ var orm = {
             });
         }
         else if(column) {
-            console.log("one exists");
             var queryString = "SELECT * FROM " + table + "WHERE `" + column + "` IS NOT NULL;";
             connection.query(queryString, function(err, result) {
                 if (err) throw err;
@@ -34,9 +32,7 @@ var orm = {
             });
         }
         else {
-            console.log("none exist");
             var queryString = "SELECT * FROM " + table + ";";
-            console.log(queryString);
             connection.query(queryString, table, function(err, result) {
                 if (err) throw err;
                 displayFunction(result);
