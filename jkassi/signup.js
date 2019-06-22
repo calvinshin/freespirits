@@ -16,6 +16,7 @@ $("#submit-signup").on("click", function(event) {
     
     var newUser = {
         username: $("#signup-username").val().trim(),
+        email: $("#signup-email").val().trim(),
         password: $("#signup-password").val()
     }
 
