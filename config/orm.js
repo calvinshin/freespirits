@@ -27,8 +27,8 @@ var orm = {
         }
         else if(column) {
             console.log("one exists");
-            var queryString = "SELECT * FROM " + table + " IS NOT NULL;";
-            connection.query(queryString, [column], function(err, result) {
+            var queryString = "SELECT * FROM " + table + "WHERE `" + column + "` IS NOT NULL;";
+            connection.query(queryString, function(err, result) {
                 if (err) throw err;
                 displayFunction(result);
             });
