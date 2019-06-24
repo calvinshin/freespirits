@@ -6,15 +6,6 @@ var orm = require("../config/orm");
 // Initialize the router for express
 router = express.Router();
 
-// Shows all valid routes below
-router.get("/", function(req, res) {
-    res.render("index")
-})
-
-router.get("/search", function(req, res) {
-    res.render("search-page")
-    
-});
 // Example of what an original connection.query would look like. 
         // Note how the orm requires only one input, not two.
 
@@ -24,6 +15,16 @@ router.get("/search", function(req, res) {
 //     res.render("search-results", {trips: trips})
 //     })
 // })
+
+// Shows all valid routes below
+router.get("/", function(req, res) {
+    res.render("index")
+})
+
+router.get("/search", function(req, res) {
+    res.render("search-page")
+    
+});
 
 router.get("/search-results", function(req, res) {
     orm.Read("trips", function(trips) {
