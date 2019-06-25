@@ -14,10 +14,16 @@ var orm = require("./orm");
 
 console.log("\n\n\n");
 
-orm.Read("profiles", function(result) {
-    console.log(result[0].fname);
-}, "fname", "Octoman");
+// orm.Read("profiles", function(result) {
+//     console.log(result[0].fname);
+// }, "fname", "Octoman");
 
 // orm.Read("trips", function(result) {
 //     console.log(result);}, "trip_id"
 // })
+
+// orm.test();
+
+// orm.Read("trips", function(result) {
+//     console.log(result);}, {creator_id: 2}
+// )
