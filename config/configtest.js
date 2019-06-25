@@ -19,11 +19,13 @@ console.log("\n\n\n");
 // }, "fname", "Octoman");
 
 // orm.Read("trips", function(result) {
-//     console.log(result);}, "trip_id"
+//     console.log(result);
 // })
 
-// orm.test();
+orm.Read("trips", function(result) {
+    console.log(result);}, {creator_id: 2}
+)
 
-// orm.Read("trips", function(result) {
-//     console.log(result);}, {creator_id: 2}
-// )
+// orm.Update("trips", function(response) {
+//     console.log(response)
+// }, 3, {status: 'deleted'});

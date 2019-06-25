@@ -32,27 +32,27 @@ var orm = {
 
         // Currently this could be affected by SQL injections
         if(typeof column === "object") {
-            connection.query("SELECT * FROM `" + table + "` WHERE ?", column, function(err, result) {
+            connection.query("SELECT * FROM `" + table + "` WHERE ? AND NOT status = 'deleted';", column, function(err, result) {
                 if (err) throw err;
                 displayFunction(result)
             })
         }
         else if(column && parameter) {
-            var queryString = "SELECT * FROM `" + table + "` WHERE `" + column + "` = ?;";
+            var queryString = "SELECT * FROM `" + table + "` WHERE `" + column + "` = ? AND NOT status = deleted;";
             connection.query(queryString, [parameter], function(err, result) {
                 if (err) throw err;
                 displayFunction(result);
             });
         }
         else if(column) {
-            var queryString = "SELECT * FROM " + table + "WHERE `" + column + "` IS NOT NULL;";
+            var queryString = "SELECT * FROM " + table + "WHERE `" + column + "` IS NOT NULL AND NOT status = deleted;";
             connection.query(queryString, function(err, result) {
                 if (err) throw err;
                 displayFunction(result);
             });
         }
         else {
-            var queryString = "SELECT * FROM " + table + ";";
+            var queryString = "SELECT * FROM " + table + " WHERE NOT status = deleted;";
             connection.query(queryString, table, function(err, result) {
                 if (err) throw err;
                 displayFunction(result);
@@ -61,10 +61,19 @@ var orm = {
     },
 
     // Update item
-    Update : function(table, displayFunction, object) {
-
-    }
-    // Destroy item
+    Update : function(table, displayFunction, id, object) {
+        connection.query("UPDATE ?? set ? WHERE id = ?", [table, object, id], function(err, res, fields) {
+            if (err) throw err;
+            displayFunction(res);
+        });
+    },
+    // Destroy item ---- to create this, need status for accounts
+    // Delete : function(table, displayFunction, id, object) {
+    //     connection.query("UPDATE ?? set ? WHERE id = ?", [table, object, id], function(err, res, fields) {
+    //         if (err) throw err;
+    //         displayFunction(res);
+    //     });
+    // },
 };
 
 
