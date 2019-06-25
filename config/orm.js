@@ -18,6 +18,7 @@ var orm = {
             //     });
             // }
             // Return the result into the displayFunction
+            console.log(result.insertId);
             displayFunction(result.insertId);
         });
     },

@@ -36,10 +36,9 @@ router.get("/create-trip", function(req, res) {
 });
 
 router.post("/confirmation-trip", function(req, res) {
-    orm.Create("trips", req.body, function(result) {
-        console.log(result)
+    orm.Create("trips", function(result) {
         res.redirect("/individual-trip/" + result)
-    });
+    }, req.body);
 });
 
 router.get("/create-profile", function(req, res) {
@@ -47,9 +46,9 @@ router.get("/create-profile", function(req, res) {
 });
 
 router.post("/confirmation-profile", function(req, res) {
-    orm.Create("profiles", req.body, function(result) {
+    orm.Create("profiles", function(result) {
         res.render("view-profile", result)
-    });
+    }, req.body);
 });
 
 router.get(
