@@ -269,8 +269,8 @@ CREATE TABLE relations(
 
 INSERT INTO relations (profile_id, trip_id, relationship_type)
 VALUES  (1,1,'creator'),
-(1,2,'creator'),
-(2,3,'creator'),
+(2,2,'creator'),
+(3,3,'creator'),
 (17,4,'creator'),
 (9,5,'creator'),
 (30,6,'creator'),
