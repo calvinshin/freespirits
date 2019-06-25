@@ -5,14 +5,20 @@ var connection = require("./connection");
 var orm = {
     // Create item
     Create : function(table, displayFunction, object) {
+        console.log(object);
         let queryString = "INSERT INTO `" + table + "` SET ?";
         connection.query(queryString, object, function(err, result) {
             if (err) throw err;
             // If creating a new trip, create a new line in the relations tab;
-            let trip_id = result[0].id;
-            let creator_id = result[0].creator_id;
+            // if(table === "trips") {
+            //     let trip_id = result.insertId;
+            //     let creator_id = object.creator_id;
+            //     connection.query("INSERT INTO relations (profile_id, trip_id, relationship_type) VALUES  (" + creator_id + ",", trip_id + ",creator);", function(error, resultTwo) {
+            //         if (error) throw error;
+            //     });
+            // }
             // Return the result into the displayFunction
-            displayFunction(result);
+            displayFunction(result.insertId);
         });
     },
     // Read item
