@@ -78,9 +78,9 @@ app.get ("/api/profiles", function(req, res) {
     
 })
 
-app.get("/added", function(req, res) {
-    res.render("confirmation-page")
-})
+// app.get("/added", function(req, res) {
+//     res.render("confirmation-page",)
+// })
 
 // app.get ("/tripID", function (req, res) {
 //     res.render("individual-trip", {singleTrip: singleTrip})
@@ -91,18 +91,30 @@ app.get("*", function(req, res) {
     res.send("This is working!");
 })
 
+
+
 app.post("/confirmation-trip", function(req, res) {
-    connection.query(
-        // console.log(res);
-        "INSERT INTO trips (title, destination, starting_date, end_date, duration, primary_language, travel_philosophy, description, budget_day, currency, group_size, authorId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
-    [req.body.tripName, req.body.destination, req.body.startDate, req.body.endDate, req.body.duration, req.body.destLanguage, req.body.philosophy, req.body.description, req.body.budget, req.body.currency, req.body.groupSize, req.body.authorId],
-    function(err, result) {
-        if (err) {
-            return res.status(500).end();
-        }  
-    }
-    )
-    res.render("confirmation-trip")
+    orm.Create("trips", req.body, function(result) {
+        console.log(result)
+        res.render("individual-trip", result[0].id)
+        
+    })
+    // connection.query(
+    //     // console.log(res);
+        
+    //     "INSERT INTO trips 
+    //     // (title, destination, starting_date, end_date, duration, primary_language, travel_philosophy, description, budget_day, currency, group_size, creator_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+    //     // [req.body]
+    //     // [req.body.tripName, req.body.destination, req.body.startDate, req.body.endDate, req.body.duration, req.body.destLanguage, req.body.philosophy, req.body.description, req.body.budget, req.body.currency, req.body.groupSize, req.body.authorId],
+        
+    // function(err, result) {
+    //     if (err) {
+    //         return res.status(500).end();
+    //     }  
+    // }
+    // )
+    
+    
 })
 
 app.post("/confirmation-profile", function(req, res) {
