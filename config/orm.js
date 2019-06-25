@@ -10,15 +10,15 @@ var orm = {
         connection.query(queryString, object, function(err, result) {
             if (err) throw err;
             // If creating a new trip, create a new line in the relations tab;
-            // if(table === "trips") {
-            //     let trip_id = result.insertId;
-            //     let creator_id = object.creator_id;
-            //     connection.query("INSERT INTO relations (profile_id, trip_id, relationship_type) VALUES  (" + creator_id + ",", trip_id + ",creator);", function(error, resultTwo) {
-            //         if (error) throw error;
-            //     });
-            // }
+            if(table === "trips") {
+                let trip_id = result.insertId;
+                let creator_id = object.creator_id;
+                let queryStringTwo = "INSERT INTO relations (profile_id, trip_id, relationship_type) VALUES  (" + creator_id + "," + trip_id + ",'creator');";
+                connection.query(queryStringTwo, function(error, resultTwo) {
+                    if (error) throw error;
+                });
+            }
             // Return the result into the displayFunction
-            console.log(result.insertId);
             displayFunction(result.insertId);
         });
     },
