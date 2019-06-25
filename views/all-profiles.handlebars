@@ -1,0 +1,15 @@
+<div>
+    {{#each profiles}}
+        
+        <p>User ID: {{this.id}}</p>
+        <p>Name: {{this.fname}} {{this.lname}}</p>
+        <p>Photo url: {{this.picture}}</p>
+        <p>Gender: {{this.gender}} </p>
+        <p>Travel Philosophy: {{this.travel_philosophy}} </p>
+        <p>Email: {{this.email}}</p>
+        <p>Primary Language: {{this.primary_language}}</p>
+        <p>Profile created: {{this.createdAt}}</p>
+        
+    {{/each}}
+
+</div>
