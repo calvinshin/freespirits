@@ -75,13 +75,14 @@ router.get(
 
 router.get("/api/trips", function(req, res) {
     orm.Read("trips", function(trips) {
-        res.render("search-results", {trips: trips})
+        res.send(trips);
+        // res.render("search-results", {trips: trips})
     })
 });
 
 router.get ("/api/profiles", function(req, res) {
     orm.Read("profiles", function (profiles) {
-    res.render("all-profiles", {profiles: profiles})
+        res.send(profiles);
     }) 
 });
 
