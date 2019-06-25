@@ -38,7 +38,7 @@ router.get("/create-trip", function(req, res) {
 router.post("/confirmation-trip", function(req, res) {
     orm.Create("trips", req.body, function(result) {
         console.log(result)
-        res.render("individual-trip", result)
+        res.redirect("/individual-trip/" + result)
     });
 });
 
