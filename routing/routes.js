@@ -74,16 +74,15 @@ router.get(
 );
 
 router.get("/api/trips", function(req, res) {
-    connection.query("SELECT * FROM trips", function (err, trips) {
-        // res.send("/api/trips")
-    res.render("search-results", {trips: trips})
-    });
+    orm.Read("trips", function(trips) {
+        res.send(trips);
+        // res.render("search-results", {trips: trips})
+    })
 });
 
 router.get ("/api/profiles", function(req, res) {
-    connection.query("SELECT * FROM profiles", function (err, profiles) {
-        // res.send("/api/trips")
-    res.render("all-profiles", {profiles: profiles})
+    orm.Read("profiles", function (profiles) {
+        res.send(profiles);
     }) 
 });
 
