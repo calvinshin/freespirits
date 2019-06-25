@@ -47,7 +47,7 @@ router.get("/create-profile", function(req, res) {
 
 router.post("/confirmation-profile", function(req, res) {
     orm.Create("profiles", function(result) {
-        res.render("view-profile", result)
+        res.redirect("view-profile/" + result)
     }, req.body);
 });
 
@@ -56,6 +56,17 @@ router.get(
     function(req, res) {
         orm.Read("trips", function(trips) {
             res.render("individual-trip", trips[0]);
+        },
+            "id",[req.params.id]
+        );
+    },
+);
+
+router.get(
+    "/view-profile/:id",
+    function(req, res) {
+        orm.Read("profiles", function(profiles) {
+            res.render("view-profile", profiles[0]);
         },
             "id",[req.params.id]
         );
