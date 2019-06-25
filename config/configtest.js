@@ -15,8 +15,8 @@ var orm = require("./orm");
 console.log("\n\n\n");
 
 orm.Read("profiles", function(result) {
-    console.log(result);
-}, "fname", "Octoman")
+    console.log(result[0].fname);
+}, "fname", "Octoman");
 
 // orm.Read("trips", function(result) {
 //     console.log(result);}, "trip_id"
