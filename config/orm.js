@@ -27,8 +27,17 @@ var orm = {
         // Create the querystring based on what values are returned from Read
         // Note for the functions below that column and parameter are optional fields.
         
+// Add into queries where NOT DELETED;
+
+
         // Currently this could be affected by SQL injections
-        if(column && parameter) {
+        if(typeof column === "object") {
+            connection.query("SELECT * FROM `" + table + "` WHERE ?", column, function(err, result) {
+                if (err) throw err;
+                displayFunction(result)
+            })
+        }
+        else if(column && parameter) {
             var queryString = "SELECT * FROM `" + table + "` WHERE `" + column + "` = ?;";
             connection.query(queryString, [parameter], function(err, result) {
                 if (err) throw err;
@@ -52,7 +61,9 @@ var orm = {
     },
 
     // Update item
+    Update : function(table, displayFunction, object) {
 
+    }
     // Destroy item
 };
 
