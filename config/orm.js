@@ -5,11 +5,15 @@ var connection = require("./connection");
 var orm = {
     // Create item
     Create : function(table, displayFunction, object) {
-        let queryString = "INSERT INTO `" + table + "` SET ?"
+        let queryString = "INSERT INTO `" + table + "` SET ?";
         connection.query(queryString, object, function(err, result) {
             if (err) throw err;
+            // If creating a new trip, create a new line in the relations tab;
+            let trip_id = result[0].id;
+            let creator_id = result[0].creator_id;
+            // Return the result into the displayFunction
             displayFunction(result);
-        })
+        });
     },
     // Read item
     Read : function(table, displayFunction, column, parameter) {
