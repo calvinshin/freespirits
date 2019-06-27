@@ -72,7 +72,13 @@ router.get(
     "/individual-trip/:id",
     function(req, res) {
         orm.Read("trips", function(trips) {
-            res.render("individual-trip", trips[0]);
+            // Check if a trip exists or not
+            if(trips.length === 0) {
+                res.render("missing-trip");
+            }
+            else{
+                res.render("individual-trip", trips[0]);
+            }
         },
             "id",[req.params.id]
         );
