@@ -32,27 +32,27 @@ var orm = {
 
         // Currently this could be affected by SQL injections
         if(typeof column === "object") {
-            connection.query("SELECT * FROM `" + table + "` WHERE ? AND NOT status = 'deleted';", column, function(err, result) {
+            connection.query("SELECT * FROM `" + table + "` WHERE ? AND status <> 'deleted';", column, function(err, result) {
                 if (err) throw err;
                 displayFunction(result)
             })
         }
         else if(column && parameter) {
-            var queryString = "SELECT * FROM `" + table + "` WHERE `" + column + "` = ? AND NOT status = deleted;";
+            var queryString = "SELECT * FROM `" + table + "` WHERE `" + column + "` = ? AND status <> 'deleted';";
             connection.query(queryString, [parameter], function(err, result) {
                 if (err) throw err;
                 displayFunction(result);
             });
         }
         else if(column) {
-            var queryString = "SELECT * FROM " + table + "WHERE `" + column + "` IS NOT NULL AND NOT status = deleted;";
+            var queryString = "SELECT * FROM " + table + "WHERE `" + column + "` IS NOT NULL AND status <> 'deleted';";
             connection.query(queryString, function(err, result) {
                 if (err) throw err;
                 displayFunction(result);
             });
         }
         else {
-            var queryString = "SELECT * FROM " + table + " WHERE NOT status = deleted;";
+            var queryString = "SELECT * FROM " + table + " WHERE status <> 'deleted';";
             connection.query(queryString, table, function(err, result) {
                 if (err) throw err;
                 displayFunction(result);
@@ -67,6 +67,7 @@ var orm = {
             displayFunction(res);
         });
     },
+
     // Destroy item ---- to create this, need status for accounts
     // Delete : function(table, displayFunction, id, object) {
     //     connection.query("UPDATE ?? set ? WHERE id = ?", [table, object, id], function(err, res, fields) {
@@ -74,6 +75,14 @@ var orm = {
     //         displayFunction(res);
     //     });
     // },
+
+    SpecificTripsColumn : function(column, displayFunction) {
+        connection.query("SELECT ?? FROM trips WHERE status <> 'deleted'", [column], function(err, result) {
+            if (err) throw err;
+            let columnArray = result.map(a => a.destination)
+            displayFunction(columnArray);
+        });
+    }
 };
 
 
