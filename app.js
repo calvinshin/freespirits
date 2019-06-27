@@ -23,8 +23,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Handlebars
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({ defaultLayout: "main",
+partialsDir: '/views/partials/'
+}));
 app.set("view engine", "handlebars");
+var hbs = exphbs.create({
+    partialsDir: [
+        'shared/templates/',
+        '/views/partials/'
+    ]
+})
 
 //is this file going to exist?
 // var routes = require("./controllers/tripController.js");
