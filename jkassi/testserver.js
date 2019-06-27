@@ -16,13 +16,22 @@ app.use(session({
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
+app.use(express.static("./public"));
+
 // connect to mysql
 var connection = mysql.createConnection({
 	host     : 'localhost',
 	user     : 'root',
-	password : 'kassiPassw0rd', // so secure! LOL
+	password : 'kassiPassw0rd',
 	database : 'freespirits_accounts'
 });
+
+connection.connect(function(err){
+    if (err) throw (err);
+    console.log("Connected");
+}
+
+)
 
 // this is the signup page
 app.post("/signup", function(req, res){
@@ -35,7 +44,7 @@ app.post("/signup", function(req, res){
                 console.log("created user " + username);
 				res.send("<h1>Account Created</h1>");
 			} else {
-				res.send('Incorrect username, email or password!');
+				res.send('<h1>Incorrect username, email or password!</h1>');
 			}			
 			res.end();
         });
@@ -58,7 +67,7 @@ app.post("/login", function(req, res){
                 req.session.loggedin = true; // TODO: auth etc
                 req.session.username = username;
                 console.log("user logged in: " + username);
-				res.redirect("/home"); // TODO: CHANGE ME
+				res.redirect("/home"); // TODO: CHANGE ME TO PRE-RESULTS SEARCH READY PAGE
 			} else {
 				res.send('Incorrect username and/or password!');
 			}			
