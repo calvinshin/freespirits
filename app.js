@@ -3,9 +3,13 @@ var connection = require("./config/connection.js");
 var orm = require("./config/orm");
 var routes = require("./routing/routes");
 
+
 // Node modules
 var express = require("express");
 var exphbs = require("express-handlebars");
+var Handlebars     = require('handlebars');
+var HandlebarsIntl = require('handlebars-intl');
+HandlebarsIntl.registerWith(Handlebars);
 
 // Express initialize
 var app = express();
