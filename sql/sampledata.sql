@@ -16,7 +16,7 @@ CREATE TABLE trips(
   budget_day INTEGER(4),
   currency VARCHAR(30),
   users VARCHAR(255),
-  status VARCHAR(30),
+  status VARCHAR(30) DEFAULT "Open",
   group_size INTEGER(2),
   primary_language VARCHAR(30),
   createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -33,6 +33,7 @@ CREATE TABLE profiles(
   description VARCHAR(500),
   email VARCHAR(100),
   primary_language VARCHAR(30),
+  status VARCHAR(30) DEFAULT "Active",
   createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 );
@@ -261,6 +262,7 @@ CREATE TABLE relations(
   profile_id INTEGER(11) NOT NULL,
   trip_id INTEGER(11) NOT NULL, 
   relationship_type VARCHAR(30) NOT NULL,
+  status VARCHAR(30) DEFAULT "Active",
   createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 );
@@ -269,8 +271,8 @@ CREATE TABLE relations(
 
 INSERT INTO relations (profile_id, trip_id, relationship_type)
 VALUES  (1,1,'creator'),
-(2,2,'creator'),
-(3,3,'creator'),
+(1,2,'creator'),
+(2,3,'creator'),
 (17,4,'creator'),
 (9,5,'creator'),
 (30,6,'creator'),

@@ -14,17 +14,21 @@ var orm = require("./orm");
 
 console.log("\n\n\n");
 
-// orm.Read("profiles", function(result) {
-//     console.log(result[0].fname);
-// }, "fname", "Octoman");
+orm.Read("profiles", function(result) {
+    console.log(result[0].fname);
+}, "fname", "Octoman");
 
 // orm.Read("trips", function(result) {
 //     console.log(result);
 // })
 
-orm.Read("trips", function(result) {
-    console.log(result);}, {creator_id: 2}
-)
+// orm.Read("trips", function(result) {
+//     console.log(result);}, {creator_id: 2}
+// )
+
+// orm.SpecificTripsColumn("destination", function(result) {
+//     console.log(result);
+// })
 
 // orm.Update("trips", function(response) {
 //     console.log(response)

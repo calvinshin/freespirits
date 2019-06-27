@@ -26,9 +26,26 @@ router.get("/search", function(req, res) {
 });
 
 router.get("/search-results", function(req, res) {
-    orm.Read("trips", function(trips) {
-        res.render("search-results", {trips: trips})
-    });
+    // If coming from a request
+    if(req) {
+        // Strip all of the blank properties that are coming through on req.query so SQL works in variable obj
+        let obj = req.query
+        for (var propName in obj) { 
+            if (obj[propName] === "") {
+            delete obj[propName];
+            }
+        }
+        // Run obj through the ORM to display the results
+        orm.Read("trips", function(trips) {
+            res.render("search-results", {trips: trips})
+        }, obj);
+    }
+    // Show all results
+    else {
+        orm.Read("trips", function(trips) {
+            res.render("search-results", {trips: trips})
+        });    
+    }
 });
 
 router.get("/create-trip", function(req, res) {
