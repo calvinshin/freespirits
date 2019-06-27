@@ -8,6 +8,8 @@
 
 // 3. Write backend routes for posting and getting users
 
+// hello moiz is here see? hi I see
+
 $(document).ready(function() {
 
 $("#submit-signup").on("click", function(event) {
