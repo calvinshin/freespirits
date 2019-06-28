@@ -8,7 +8,6 @@
 
 // 3. Write backend routes for posting and getting users
 
-// hello moiz is here see? hi I see
 
 $(document).ready(function() {
 
@@ -29,7 +28,7 @@ $("#submit-signup").on("click", function(event) {
         method: "POST",
         data: newUser
     }).then(function(res){
-        $("#signup-form").after("<h1>Account Created</h1>");
+        $("#signup-form").after(res);
     })
 
 });
@@ -38,7 +37,28 @@ $("#submit-signup").on("click", function(event) {
 // It will follow a similar convention to app.get!
 // SO, here it is
 
+$("#submit-login").on("click", function(event) {
+    event.preventDefault();
+    // prevents it from refreshing the page when submit button is clicked
+    
+    var newUser = {
+        username: $("#login-username").val().trim(),
+        // email: $("#signup-email").val().trim(),
+        password: $("#login-password").val()
+    }
 
+    // console.log(newUser);
+    // uncomment this out for testing later ^
+    
+    $.ajax({
+        url:"/login",
+        method: "POST",
+        data: newUser
+    }).then(function(res){
+        $("#login-form").after(res);
+    })
+
+});
 
     
 });
