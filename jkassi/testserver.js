@@ -3,6 +3,7 @@ var express = require("express");
 var session = require("express-session");
 var bodyParser = require('body-parser');
 var path = require("path");
+var bcrypt = require("bcrypt");
 
 var PORT = process.env.PORT || 8080;
 var app = express();
@@ -39,15 +40,20 @@ app.post("/signup", function(req, res){
     email = req.body.email;
     password = req.body.password;
     if (username && email && password) { // create new user
-        connection.query("INSERT INTO accounts (username, password, email) VALUES (?, ?, ?)", [username, password, email], function(error, results, fields){
-            if (results.length > 0) {
-                console.log("created user " + username);
-				res.send("<h1>Account Created</h1>");
-			} else {
-				res.send('<h1>Incorrect username, email or password!</h1>');
-			}			
-			res.end();
-        });
+        bcrypt.hash(password, 8, function(err, hash) {
+            // Store hash in your password DB.
+            var hashedPassword = hash;
+            connection.query("INSERT INTO accounts (username, password, email) VALUES (?, ?, ?)", [username, hashedPassword, email], function(error, results, fields){
+                console.log(results);
+                if (results.length > 0) {
+                    console.log("created user " + username);
+                    res.send("<h1>Account Created</h1>");
+                } else {
+                    res.send('<h1>Incorrect username, email or password!</h1>');
+                }			
+                res.end();
+            });
+          });
     } else {
         res.send("Please enter a valid username, email and password");
         res.end();
@@ -62,16 +68,23 @@ app.post("/login", function(req, res){
     username = req.body.username;
     password = req.body.password;
     if (username && password) { // login user
-        connection.query("SELECT * FROM accounts WHERE username = ? AND password = ?", [username, password], function(error, results, fields){
-            if (results.length > 0) {
-                req.session.loggedin = true; // TODO: auth etc
-                req.session.username = username;
-                console.log("user logged in: " + username);
-				res.redirect("/home"); // TODO: CHANGE ME TO PRE-RESULTS SEARCH READY PAGE
-			} else {
-				res.send('Incorrect username and/or password!');
-			}			
-			res.end();
+        connection.query("SELECT * FROM accounts WHERE username = ?", [username], function(error, results, fields){
+            // console.log(results);
+
+            bcrypt.compare(password, results[0].password).then(function(authRes) {
+                // authRes == true
+                if (authRes) {
+                    req.session.loggedin = true; // TODO: auth etc
+                    req.session.username = username;
+                    console.log("user logged in: " + username);
+                    res.redirect("/home"); // TODO: CHANGE ME TO PRE-RESULTS SEARCH READY PAGE
+                } else {
+                    res.send('Incorrect username and/or password!');
+                }			
+                res.end();
+            });
+
+
         });
     } else {
         res.send("Please enter a valid username and password");

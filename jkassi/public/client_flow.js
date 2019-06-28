@@ -47,7 +47,8 @@ $("#submit-login").on("click", function(event) {
         password: $("#login-password").val()
     }
 
-    console.log(newUser);
+    // console.log(newUser);
+    // uncomment this out for testing later ^
     
     $.ajax({
         url:"/login",
