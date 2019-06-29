@@ -18,7 +18,7 @@ router = express.Router();
 
 // Shows all valid routes below
 router.get("/", function(req, res) {
-    res.render("index")
+    res.render("index", {layout: "front"})
 });
 
 router.get("/search", function(req, res) {
