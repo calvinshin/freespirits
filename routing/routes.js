@@ -110,7 +110,6 @@ router.get ("/api/profiles", function(req, res) {
 });
 
 
-
 router.get("*", function(req, res) {
     res.send("This is working!");
 })
