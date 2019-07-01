@@ -21,7 +21,7 @@ header {
   filter: brightness(80%)
 }
 
-.caption {
+.indexDiv {
     position: absolute;
     left: 0;
     top: 15%;
@@ -29,6 +29,7 @@ header {
     text-align: center;
     color: #FFFFFF;
     font-size: 300%;
+    transform: translateY(-15%)
 }
 
 .captionHeader {
@@ -40,3 +41,12 @@ header {
 .captionSubtext {
     font-size: medium;
 }
+
+.indexButtons {
+    margin-top: 20%;
+}
+
+.indexButtons form{
+    display: inline;
+}
+
