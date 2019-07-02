@@ -24,12 +24,12 @@ header {
 .indexDiv {
     position: absolute;
     left: 0;
-    top: 15%;
+    top: 50%;
     width: 100%;
     text-align: center;
     color: #FFFFFF;
     font-size: 300%;
-    transform: translateY(-15%)
+    transform: translateY(-50%)
 }
 
 .captionHeader {
@@ -43,10 +43,9 @@ header {
 }
 
 .indexButtons {
-    margin-top: 20%;
+    margin-top: 15%;
 }
 
-.indexButtons form{
-    display: inline;
+.indexButton {
+    
 }
-
