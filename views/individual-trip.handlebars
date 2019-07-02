@@ -36,7 +36,8 @@ Who else is coming? {{> userPartial}}
 <br>
 This trip's status: {{status}}
 
-<form action="/added-to-trip" method="post">
+<form class="form">
+    {{!-- action="/added-to-trip" method="post" --}}
 Love this trip and want to come along?
 <br>
 <input type="hidden" name="trip_id" value={{id}}>
@@ -47,3 +48,4 @@ Enter your user ID # <input type="number" name="profile_id">
 <br>
 <button type="submit" class="join-trip">Join this trip!</button>
 </form>
+
