@@ -82,15 +82,28 @@ router.get(
     "/individual-trip/:id",
     function(req, res) {
         orm.Read("trips", function(trips) {
-            // Check if a trip exists or not
-            if(trips.length === 0) {
-                res.render("missing-trip");
-            }
-            else{
-                // connection.query("SELECT * FROM 'relations' WHERE 'trip_id' = ?")
-                trips[0].isConfirmed = false;
-                res.render("individual-trip", trips[0]);
-            }
+            orm.futureFriends(req.params.id, function(relations) {
+                if(relations === []) {
+                    trips[0].people = ["No one has joined this trip yet"]
+                }
+                else {
+                    var travelers = [];
+                    for (var i = 0; i < relations.length; i++) {
+                        travelers.push(relations[i].fname);
+                    }
+                    travelersString = travelers.join(", ")
+                    trips[0].people = travelersString;
+                }
+                // Check if a trip exists or not
+                if(trips.length === 0) {
+                    res.render("missing-trip");
+                }
+                else{
+                    // connection.query("SELECT * FROM 'relations' WHERE 'trip_id' = ?")
+                    
+                    res.render("individual-trip", trips[0]);
+                }
+            })
         },
             "id",[req.params.id]
         );
@@ -98,6 +111,7 @@ router.get(
         //     res.render("users-partial")
         // })
     },
+
 );
 
 router.get(

@@ -12,11 +12,11 @@ var orm = require("./orm");
 //     console.log(result);
 // });
 
-console.log("\n\n\n");
+// console.log("\n\n\n");
 
-orm.Read("profiles", function(result) {
-    console.log(result[0].fname);
-}, "fname", "Octoman");
+// orm.Read("profiles", function(result) {
+//     console.log(result[0].fname);
+// }, "fname", "Octoman");
 
 // orm.Read("trips", function(result) {
 //     console.log(result);
@@ -33,3 +33,7 @@ orm.Read("profiles", function(result) {
 // orm.Update("trips", function(response) {
 //     console.log(response)
 // }, 3, {status: 'deleted'});
+
+orm.futureFriends(4, function(results){
+    console.log(results)
+})

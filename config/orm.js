@@ -2,7 +2,15 @@ var connection = require("./connection");
 
 // Create a list of all tables and all columns so that no sql injection from a query is possible;
 
+
 var orm = {
+    futureFriends: function(trip_id, displayFunction) {
+        connection.query("SELECT profiles.fname FROM relations LEFT JOIN  profiles ON relations.profile_id = profiles.id WHERE trip_id=" + trip_id + " AND relationship_type='committed'", function(err, result) {
+            if(err) throw (err);
+            displayFunction(result)
+        });
+    },
+
     // Create item
     Create : function(table, displayFunction, object) {
         console.log(object);
@@ -18,10 +26,6 @@ var orm = {
                     if (error) throw error;
                 });
             }
-
-        
-
-           
             // Return the result into the displayFunction
             displayFunction(result.insertId);
         });
@@ -50,6 +54,7 @@ var orm = {
             var queryString = "SELECT * FROM " + table + "WHERE `" + column + "` IS NOT NULL AND status <> 'deleted';";
             connection.query(queryString, function(err, result) {
                 if (err) throw err;
+                connection.query(queryString, )
                 displayFunction(result);
             });
         }
