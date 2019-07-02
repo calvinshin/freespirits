@@ -33,7 +33,7 @@ var hbs = exphbs.create({
         '/views/partials/'
     ]
 })
-
+Handlebars.registerPartial("userPartial", "{{users-partial}}")
 //is this file going to exist?
 // var routes = require("./controllers/tripController.js");
 

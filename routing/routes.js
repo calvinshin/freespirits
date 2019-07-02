@@ -54,6 +54,7 @@ router.get("/create-trip", function(req, res) {
 
 router.post("/confirmation-trip", function(req, res) {
     orm.Create("trips", function(result) {
+        
         res.redirect("/individual-trip/" + result)
     }, req.body);
 });
@@ -68,6 +69,15 @@ router.post("/confirmation-profile", function(req, res) {
     }, req.body);
 });
 
+router.post("/added-to-trip", function(req, res) {
+    console.log("-----")
+    console.log(req.body)
+    
+    orm.Create("relations", function(result) {
+        res.redirect("/individual-trip/" + req.body.trip_id)
+    }, req.body);
+});
+
 router.get(
     "/individual-trip/:id",
     function(req, res) {
@@ -77,11 +87,16 @@ router.get(
                 res.render("missing-trip");
             }
             else{
+                // connection.query("SELECT * FROM 'relations' WHERE 'trip_id' = ?")
+                trips[0].isConfirmed = false;
                 res.render("individual-trip", trips[0]);
             }
         },
             "id",[req.params.id]
         );
+        // orm.Read("relations", function() {
+        //     res.render("users-partial")
+        // })
     },
 );
 
