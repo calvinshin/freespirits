@@ -18,6 +18,10 @@ var orm = {
                     if (error) throw error;
                 });
             }
+
+        
+
+           
             // Return the result into the displayFunction
             displayFunction(result.insertId);
         });
@@ -28,8 +32,6 @@ var orm = {
         // Note for the functions below that column and parameter are optional fields.
         
 // Add into queries where NOT DELETED;
-
-
         // Currently this could be affected by SQL injections
         if(typeof column === "object") {
             connection.query("SELECT * FROM `" + table + "` WHERE ? AND status <> 'deleted';", column, function(err, result) {
