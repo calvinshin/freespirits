@@ -83,8 +83,8 @@ router.get(
     function(req, res) {
         orm.Read("trips", function(trips) {
             orm.futureFriends(req.params.id, function(relations) {
-                if(relations === []) {
-                    trips[0].people = ["No one has joined this trip yet"]
+                if(relations = []) {
+                    trips[0].people = ["Be the first to join this trip"]
                 }
                 else {
                     var travelers = [];
@@ -100,16 +100,12 @@ router.get(
                 }
                 else{
                     // connection.query("SELECT * FROM 'relations' WHERE 'trip_id' = ?")
-                    
                     res.render("individual-trip", trips[0]);
                 }
             })
         },
             "id",[req.params.id]
         );
-        // orm.Read("relations", function() {
-        //     res.render("users-partial")
-        // })
     },
 
 );
@@ -118,7 +114,7 @@ router.get(
     "/view-profile/:id",
     function(req, res) {
         orm.Read("profiles", function(profiles) {
-            res.render("view-profile", profiles[0]);
+            res.render("view-profile/", profiles[0]);
         },
             "id",[req.params.id]
         );
