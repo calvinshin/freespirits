@@ -7,13 +7,15 @@ header {
     height: 100px;
     padding: 25px;
     /* background-color: #F4CC70; */
-    color: white;
+    color: #DE7A22;
+    /* text-shadow: 2px 2px #DE7A22 */
+    
 }
 
 body {
     font-family: 'Raleway', sans-serif;
-    background-image: url(../images/aron-visuals-1186369-unsplash.jpg);
-    background-size: 100vh;
+    background-image: url(../images/drew-colins-1114443-unsplash.jpg);
+    background-size: 100%;
     background-repeat: no-repeat;
     
 }
@@ -23,9 +25,11 @@ html, body {
 }
 
 h1 {
-    font-size: 20px;
+    font-size: 2.5em;
     font-weight: bold;
     text-align: center;
+    font-optical-sizing: auto;
+    
 }
 
 h3 {
@@ -67,7 +71,7 @@ footer {
 }
 
 a:link, a:visited {
-    color: grey;
+    color: white;
 }
 
 a:hover, a:active {
