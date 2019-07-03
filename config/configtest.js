@@ -34,6 +34,9 @@ var orm = require("./orm");
 //     console.log(response)
 // }, 3, {status: 'deleted'});
 
-orm.futureFriends(4, function(results){
-    console.log(results)
+var destinations;
+
+orm.SpecificTripsColumn("destination", function(result) {
+    destinations = result;
+    console.log(destinations);
 })
