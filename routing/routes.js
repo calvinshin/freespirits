@@ -35,10 +35,17 @@ router.get("/search-results", function(req, res) {
             delete obj[propName];
             }
         }
+        if(Object.keys(obj).length === 0) {
+            orm.Read("trips", function(trips) {
+                res.render("search-results", {trips: trips})
+            });
+        }
+        else {
+            orm.Read("trips", function(trips) {
+                res.render("search-results", {trips: trips})
+            }, obj);    
+        }
         // Run obj through the ORM to display the results
-        orm.Read("trips", function(trips) {
-            res.render("search-results", {trips: trips})
-        }, obj);
     }
     // Show all results
     else {
