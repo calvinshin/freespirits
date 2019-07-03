@@ -83,7 +83,7 @@ router.get(
     function(req, res) {
         orm.Read("trips", function(trips) {
             orm.futureFriends(req.params.id, function(relations) {
-                if(relations = []) {
+                if(relations === []) {
                     trips[0].people = ["Be the first to join this trip"]
                 }
                 else {
@@ -114,7 +114,7 @@ router.get(
     "/view-profile/:id",
     function(req, res) {
         orm.Read("profiles", function(profiles) {
-            res.render("view-profile/", profiles[0]);
+            res.render("view-profile", profiles[0]);
         },
             "id",[req.params.id]
         );
