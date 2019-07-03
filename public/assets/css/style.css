@@ -3,7 +3,7 @@ header {
     font-weight: 800; */
     font-family: 'Caveat Brush', cursive;
     font-weight: 800;
-    font-size: 28px;
+    font-size: 36px;
     height: 100px;
     padding: 25px;
     /* background-color: #F4CC70; */
@@ -67,6 +67,7 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
+    
     /* color: #F4CC70; */
 }
 
