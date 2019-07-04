@@ -22,9 +22,9 @@ var orm = require("./orm");
 //     console.log(result);
 // })
 
-// orm.Read("trips", function(result) {
-//     console.log(result);}, {creator_id: 2}
-// )
+orm.Read("trips", function(result) {
+    console.log(result);}, {creator_id: 2, id: 102}
+)
 
 // orm.SpecificTripsColumn("destination", function(result) {
 //     console.log(result);
@@ -34,9 +34,9 @@ var orm = require("./orm");
 //     console.log(response)
 // }, 3, {status: 'deleted'});
 
-var destinations;
+// var destinations;
 
-orm.SpecificTripsColumn("destination", function(result) {
-    destinations = result;
-    console.log(destinations);
-})
+// orm.SpecificTripsColumn("destination", function(result) {
+//     destinations = result;
+//     console.log(destinations);
+// })
