@@ -1,8 +1,11 @@
 
-<form action="/search-results" method="get" class="view">
+
+<form action="/search-results" method="get" class="view" autocomplete="off">
     <h3>Trip Search</h3>
     <br>
+    <div class="autocomplete" style="width:300px;">
     Destination: <input type="text" id="destination-box" name="destination"> 
+   </div>
     <br>
     Month/Year: 
     <input type="month" name="traveldate">
@@ -12,7 +15,9 @@
     <button type= "submit" class="search-trips">
     Find existing trips
     </button>
+    
 </form>
+
 
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="/assets/js/trips.js"></script>

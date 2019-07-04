@@ -141,9 +141,18 @@ router.get ("/api/profiles", function(req, res) {
     }) 
 });
 
+router.get("/api/destinations", function(req, res) {
+    orm.SpecificTripsColumn("destination", function(result) {
+        res.json(result)
+    })
+    
+})
+
 
 router.get("*", function(req, res) {
     res.send("This is working!");
 })
+
+
 
 module.exports = router;
