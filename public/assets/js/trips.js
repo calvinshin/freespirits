@@ -56,6 +56,18 @@ $(".form").on("submit", function(submit) {
         this.append(div)
 
     }
+    else {
+        $.ajax("/added-to-trip", {
+            type: "POST",
+            data: data
+        }).then(
+            function() {
+            console.log("created new cat");
+            // Reload the page to get the updated list
+            location.reload();
+            }
+        );
+    }
     // if(data.profile_id)
 
     // $.ajax("/added-to-trip", {
