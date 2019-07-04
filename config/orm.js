@@ -13,10 +13,10 @@ var orm = {
 
     // Create item
     Create : function(table, displayFunction, object) {
-        connection.query("SELECT * FROM relations WHERE ?;", object, function(err, result) {
-            if (err) throw err;
-            console.log(result);
-        })
+        // connection.query("SELECT * FROM relations WHERE ?;", object, function(err, result) {
+        //     if (err) throw err;
+        //     console.log(result);
+        // })
 
         let queryString = "INSERT INTO `" + table + "` SET ?";
         connection.query(queryString, object, function(err, result) {

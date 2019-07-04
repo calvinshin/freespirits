@@ -77,12 +77,13 @@ router.post("/confirmation-profile", function(req, res) {
 });
 
 router.post("/added-to-trip", function(req, res) {
-    console.log("-----")
-    console.log(req.body)
+    // console.log("-----")
+    // console.log(req.body)
     
     orm.Create("relations", function(result) {
-        res.redirect("/individual-trip/" + req.body.trip_id)
+        res.send("/individual-trip/" + req.body.trip_id)
     }, req.body);
+    
 });
 
 router.get(
