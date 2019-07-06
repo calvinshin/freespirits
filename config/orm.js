@@ -2,6 +2,14 @@ var connection = require("./connection");
 
 // Create a list of all tables and all columns so that no sql injection from a query is possible;
 
+var objectToString = function(object) {
+    var string = ""
+    Object.keys(object).forEach(function(item) {
+        string += "`" + item + "` = '";
+        string += object[item] + "' AND "
+    })
+    return string;
+}
 
 var orm = {
     futureFriends: function(trip_id, displayFunction) {
@@ -38,11 +46,10 @@ var orm = {
     Read : function(table, displayFunction, column, parameter) {
         // Create the querystring based on what values are returned from Read
         // Note for the functions below that column and parameter are optional fields.
-        
 // Add into queries where NOT DELETED;
         // Currently this could be affected by SQL injections
         if(typeof column === "object") {
-            connection.query("SELECT * FROM `" + table + "` WHERE ? AND status <> 'deleted';", column, function(err, result) {
+            connection.query("SELECT * FROM `" + table + "` WHERE " + objectToString(column) + " status <> 'deleted';", function(err, result) {
                 if (err) throw err;
                 displayFunction(result)
             })

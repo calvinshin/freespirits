@@ -11,25 +11,29 @@ header {
   /* The image used */
   background-image: url("/assets/images/front.png");
 
-  /* Full height */
-  height: 100%; 
-
-  /* Center and scale the image nicely */
-  background-position: center;
+  /* background-image: url(../images/drew-colins-1114443-unsplash.jpg); */
+  background-size: 200vh;
   background-repeat: no-repeat;
-  background-size: cover;
-  filter: brightness(80%)
+  background-attachment: fixed; 
+  background-position: center;
+  height: 100%;
+  /* filter: brightness(80%) */
+}
+
+.bg::before {
+
 }
 
 .indexDiv {
     position: absolute;
     left: 0;
-    top: 50%;
+    top: 10%;
     width: 100%;
     text-align: center;
     color: #FFFFFF;
     font-size: 300%;
-    transform: translateY(-50%)
+    filter: brightness(100%);
+    /* transform: translateY(-50%) */
 }
 
 .captionHeader {
@@ -43,7 +47,9 @@ header {
 }
 
 .indexButtons {
-    margin-top: 15%;
+    padding-top: 15%;
+    width: 70%;
+    margin: auto;
 }
 
 .indexButton {

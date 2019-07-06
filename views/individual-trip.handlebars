@@ -1,55 +1,56 @@
 <div class="individual">
+    <h1>Trip Details</h1>
+    <h2>{{title}}</h2>
+    {{description}}
+    <p></p>
+    <br>
+    <h3>Trip Details</h3>
+    Destination: {{destination}}
+    <br>
+    Dates: {{formatDate this.starting_date day="numeric" month="long" year="numeric"}} to {{formatDate this.end_date day="numeric" month="long" year="numeric"}}
+    <br>
+    Total days: {{duration}}
+    <br> 
+    Budget per day: {{budget_day}}
+    <br>
+    Currency used: {{currency}}
+    <br>
+    Primary language spoken: {{primary_language}}
+    <br>
+    Group size: {{group_size}}
+    <br>
+    Currency: {{currency}}
+    <br>
 
-<h1>{{title}}</h1>
-<br>
-<h3>Trip Details</h3>
-Trip ID: {{id}}
-<br>
-Destination: {{destination}}
-<br>
-Dates: {{formatDate this.starting_date day="numeric" month="long" year="numeric"}} to {{formatDate this.end_date day="numeric" month="long" year="numeric"}}
-<br>
-Total days: {{duration}}
-<br> 
-Budget per day: {{budget_day}}
-<br>
-Currency used: {{currency}}
-<br>
-Primary language spoken: {{primary_language}}
-<br>
-Group size: {{group_size}}
-<br>
-Trip description: {{description}}
-<br>
-Currency: {{currency}}
-<br>
+    <p></p>
+    <h3>Philosophy</h3>
+    Trip Creator: <a href="/view-profile/{{creator_id}}">{{creator_id}}</a>
+    <br>
+    Travel Philosophy: {{travel_philosophy}}
+    <br>
 
-<p></p>
-<h3>Philosophy</h3>
-Trip Creator: <a href="/view-profile/{{creator_id}}">{{creator_id}}</a>
-<br>
-Travel Philosophy: {{travel_philosophy}}
-<br>
-
-Who else is coming? : {{people}}
+    Who else is coming? : {{people}}
 
 
-<br>
-This trip's status: {{status}}
+    <br>
+    This trip's status: {{status}}
 
-<form class="form">
-    {{!-- action="/added-to-trip" method="post" --}}
-Love this trip and want to come along?
-<br>
-<input type="hidden" name="trip_id" value={{id}}>
-<br>
-<input type="hidden" name="relationship_type" value="committed">
-<br>
-Enter your user ID # <input type="number" name="profile_id">
-<br>
-<button type="submit" class="join-trip">Join this trip!</button>
-</form>
+    <form class="form">
+        {{!-- action="/added-to-trip" method="post" --}}
+    Love this trip and want to come along?
+    <br>
+    <input type="hidden" name="trip_id" value={{id}}>
+    <br>
+    <input type="hidden" name="relationship_type" value="committed">
+    <br>
+    Enter your user ID # <input type="number" name="profile_id">
+    <br>
+    <button type="submit" class="join-trip">Join this trip!</button>
+    </form>
 
+</div>
+
+<div class="tripSpacingDiv parallax">
 </div>
 
 <script src="https://code.jquery.com/jquery.js"></script>
