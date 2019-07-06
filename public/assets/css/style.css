@@ -14,13 +14,25 @@ header {
 
 body {
     font-family: 'Raleway', sans-serif;
+}
+
+footer {
+}
+
+.parallax {
+    font-family: 'Raleway', sans-serif;
     background-image: url(../images/drew-colins-1114443-unsplash.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed; 
     background-position: center;
     /* margin-bottom: 100px; */
-    min-height: 897px;
+    min-height: 100%;
+    z-index: -100;
+}
+
+.mostly {
+    min-height: calc(100vh - 72px);
 }
 
 html, body {
@@ -36,15 +48,22 @@ h1 {
     
 }
 
+h2 {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+
 h3 {
     font-weight: bold;
-    padding: 3px;
+    padding-top: 12px;
+    padding-bottom: 3px;
 }
 
 .view, .create {
     padding: 40px;
     background-color: white;
-    width: 400px;
+    width: 700px;
     /* height: 100%; */
     /* margin: 10px; */
     position: relative;
@@ -83,24 +102,25 @@ footer {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     padding: 25px;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    height: 100px;
+    /* height: 80px; */
     width: 100%;
-    margin: 10px;
-    background-color: transparent;
+    margin-top: 20px;
+    /* padd: 10px; */
+    background-color: #20948B70;
     clear: both;
-    
+    line-height: 0px;
     /* color: #F4CC70; */
+    height: 40px;
 }
 
 a:link, a:visited {
-    color: #F4cc70;
+    color: #cca54b;
+    border-radius: 8px;
+    padding: 5px;
 }
 
 a:hover, a:active {
-    color: #F4CC70;
+    color: #cca54b;
     background-color: white;
     border-radius: 8px;
     padding: 5px;

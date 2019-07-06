@@ -1,20 +1,33 @@
 
 
 <form action="/search-results" method="get" class="view" autocomplete="off">
-    <h3>Trip Search</h3>
+    <h1>Trip Search</h1>
+    <br>
+    Look for trips by destination or by the number of people.
     <br>
     <div class="autocomplete" style="width:300px;">
     Destination: <input type="text" id="destination-box" name="destination"> 
    </div>
     <br>
-    Month/Year: 
-    <input type="month" name="traveldate">
+    Group Size:
+    <input type="number" name="group_size">
     <br>
     Primary language spoken at destination: <input type="text" name="primary_language">
     <br>
+    <div><br></div>
+    <label class="checkbox">
+    <input type="checkbox" name="status" value="Open" checked>
+    Open/Active Listings only
+    </label>
+
+
+
+    <div><br></div>
+
     <button type= "submit" class="search-trips">
     Find existing trips
     </button>
+    
     
 </form>
 

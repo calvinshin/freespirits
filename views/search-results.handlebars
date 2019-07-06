@@ -1,15 +1,33 @@
 {{!-- <h1>Trip Search Results</h1> --}}
 
-<div class="view">
     {{#each trips}}
-        
-        <p>Trip ID: {{this.id}}</p>
+    <div class="view">
+
+        {{!-- <p>Trip ID: {{this.id}}</p>
         <p>Destination: {{this.destination}}</p>
         <p>Dates: {{formatDate this.starting_date day="numeric" month="long" year="numeric"}} - {{formatDate this.end_date day="numeric" month="long" year="numeric"}}</p>
         <p>Group size: {{group_size}} </p>
         <p><form action="/individual-trip/{{this.id}}" method="get">
             <button type="submit">Check this trip out</button>
-        </form></p>
+        </form></p> --}}
+
+    <article class="media">
+        <figure class="media-left">
+
+        </figure>
+        <div class="media-content">
+            <h2>{{this.destination}}</h2>
+            {{this.description}}
+            <p>Dates: {{formatDate this.starting_date day="numeric" month="long" year="numeric"}} - {{formatDate this.end_date day="numeric" month="long" year="numeric"}}</p>
+            <p>Group size: {{group_size}} </p>
+            <br>
+            <p><form action="/individual-trip/{{this.id}}" method="get">
+                <button type="submit">Check this trip out</button>
+            </form></p>
+        </div>
+    </article>
+
+    </div>
+    <br>
     {{/each}}
 
-</div>

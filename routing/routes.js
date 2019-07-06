@@ -42,7 +42,13 @@ router.get("/search-results", function(req, res) {
         }
         else {
             orm.Read("trips", function(trips) {
-                res.render("search-results", {trips: trips})
+                // Check if the value of trips is greater than 1
+                if(trips.length > 0) {
+                    res.render("search-results", {trips: trips})
+                }
+                else {
+                    res.render("no-results")
+                }
             }, obj);    
         }
         // Run obj through the ORM to display the results
@@ -77,12 +83,31 @@ router.post("/confirmation-profile", function(req, res) {
 });
 
 router.post("/added-to-trip", function(req, res) {
-    // console.log("-----")
-    // console.log(req.body)
-    
-    orm.Create("relations", function(result) {
-        res.send("/individual-trip/" + req.body.trip_id)
-    }, req.body);
+    // Before creating a new relationship, check to make sure that the trip is open
+    orm.Read("trips", function(result) {
+        console.log(result[0].status);
+        if(result[0].status !== "Open") {
+            res.send("This trip is not open and cannot be joined.")
+        }
+        else{
+
+            // Before creating a new relationship, check to see if this relationship already exists
+            orm.Read("relations", function(result) {
+                if(result.length === 0) {
+                    res.send("This person has already joined the trip!")
+                }
+                else {
+
+                    // create the relations
+                    orm.Create("relations", function(result) {
+                        res.send("Joined!")
+                    }, req.body);
+                }
+            }, req.body)
+        }
+    }, 'id', req.body.trip_id)
+
+
     
 });
 

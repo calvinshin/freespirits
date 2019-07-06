@@ -1,21 +1,18 @@
 <div class="individual">
-<h1>About me:</h1>
+<h1>About {{fname}}</h1>
 <br>
 <img src="{{picture}}">
 <br>
 <h3>{{fname}} {{lname}}</h3>
-<br>
+{{description}}
+<div><br></div>
 Gender: {{gender}}
 <br>
 Travel Philosophy: {{travel_philosophy}}
-<br>
-Description: {{description}}
 <br>
 Primary language spoken: {{primary_language}}
 <br>
 E-mail: {{email}}
 <br>
-Profile created on: {{createdAt}}
-<br>
-Profile id: {{id}}
+A registered freespirit since {{formatDate this.createdAt day="numeric" month="long" year="numeric"}}
 </div>

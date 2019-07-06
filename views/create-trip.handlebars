@@ -1,7 +1,10 @@
+
 <form action="/confirmation-trip" method="post" class="create">
+    <h1>Create a Trip</h3>
+    <br>
     Trip name: <input type="text" name="title" value="Let's go">
     <br>
-    Destination: <input type="text" name="destination" value="Alaska">
+    Destination: <input type="text" name="destination" value="">
     <br>
     <label for="starting_date">Start date: </label><input type="date" name="starting_date" min="2019-06-24" value="2020-01-01">
     <br>
@@ -9,20 +12,20 @@
     <br>
     Duration: <input type="number" name="duration" value="20"> days
     <br>
-    Primary language spoken in visiting country: <input type="text" name="primary_language" value="Spanish">
+    Primary language spoken in visiting country: <input type="text" name="primary_language" value="">
     <br>
     Travel philosophy for this trip: 
     <br>
-    <textarea name="travel_philosophy" rows="5" cols="30" value="have fun">Philosophy </textarea>
+    <textarea name="travel_philosophy" rows="5" cols="30">Whimsical</textarea>
     <br>
     Trip description (itinerary, can't-miss sights, lodging type, etc)
     <br>
     <textarea name="description" rows="5" cols="30" value="go to lots of cities">Go to lots of cities</textarea>
     <br>
-    Budget per day: <input type="number" name="budget_day" min="1" value="200"> USD
+    Budget per day (USD): <input type="number" name="budget_day" min="1" value="200">
     <br>
-    Currency needed: <input type="text" name="currency" value="pesos">
-    <br>
+    {{!-- Currency needed: <input type="text" name="currency" value="pesos">
+    <br> --}}
     Desired group size: <input type="number" name="group_size" min="1" value="4">
     <br>
     Your user id: <input type="number" name="creator_id" value="102">
