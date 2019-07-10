@@ -7,7 +7,11 @@ Free Spirits is an application that focuses on the spirit of travel. While some 
 ## Design Overview
 Free Spirits is an application using Node and Express. Aside from express, it depends on two other large modules, mysql and handlebars.
 ### ORM and SQL Database
-
+The data for this application is currently held in three databases:
+- trips
+- users
+- relations
+-- Because multiple users can connect to a single trip and users can join multiple trips, the one to many relationship is held in a separate database called relations. 
 ### Handlebars
 
 ## Other Elements
