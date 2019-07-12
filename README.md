@@ -13,9 +13,12 @@ The data for this application is currently held in three databases:
 - relations
 -- Because multiple users can connect to a single trip and users can join multiple trips, the one to many relationship is held in a separate database called relations. 
 ### Handlebars
+Handlebars are used to construct the website. There are two master templates used; one for the front page, and another for all of the other pages on the website.
 
 ## Other Elements
 
 ### Handlebar International
 
 ### Bulma CSS
+The application uses Bulma to drive its CSS styling. As a result of no javascript, the actual amount of animation on the application could be improved.
+Some modifications were made to Bulma, inserting new colors driven by the application design guidelines created by one member on the team.
