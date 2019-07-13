@@ -18,7 +18,7 @@ Handlebars are used to construct the website. There are two master templates use
 ## Other Elements
 
 ### Handlebar International
-
+Handlebar international is used to read and display times in local time. All of the information is saved via the database time, and therefore requires some modifications to display properly for an end-user.
 ### Bulma CSS
 The application uses Bulma to drive its CSS styling. As a result of no javascript, the actual amount of animation on the application could be improved.
 Some modifications were made to Bulma, inserting new colors driven by the application design guidelines created by one member on the team.
